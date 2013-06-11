@@ -1,0 +1,353 @@
+
+/*
+Style sheets for myGeo App
+Howard Livingston
+June, 2013
+*/
+
+/*Background Image-all pages*/
+.backgroundImage{background-image:url('http://4206e9.medialib.glogster.com/media/3251d86cddd8541195eb0ebe625a7af6fc8f2cdcb017dc5e2e21d6bb01783a81/old-paper-map-background-for-glogster.jpg');
+		max-width:100%; 
+		max-height:100%;
+}
+
+/*landing page "start navigating button*/
+.landButton{
+		text-align:center;
+		padding-top:6px;
+
+}
+
+/*landing Page Compass*/
+.landingCompass{
+
+		width:120px;
+		height:120px;
+	 	position:fixed;
+     	left: 48%;
+     	top:  50%;
+     	margin-left: -60px;
+     	margin-top:  -60px;
+			
+
+
+}
+/*Landing page box*/
+.boxed {
+		border-style:solid;
+		border-width:5px;
+		border-color:#a64a00;
+   		background: -webkit-linear-gradient(top, #ffd073, #ffd073);
+    	background: -moz-linear-gradient(top, #ffd073, #ffd073);
+    	background: -o-linear-gradient(top, #ffd073, #ffd073);
+    	background: -ms-linear-gradient(top, #ffd073, #ffd073);
+    	background: linear-gradient(top, #ffd073, #ffd073);
+    	-webkit-border-radius: 50px;
+    	-khtml-border-radius: 50px;
+    	-moz-border-radius: 30px;
+    	border-radius: 50px;
+    	-webkit-box-shadow: 0 8px 0 #1b383b;
+    	-moz-box-shadow: 0 8px 0 #1b383b;
+    	box-shadow: 0 8px 0 #1b383b;
+    	text-shadow: 0 2px 2px rgba(255, 255, 255, 0.2);
+
+}
+
+/* Landing Page Title */
+#logo h1, #logo p {
+		text-align: center;
+}
+
+
+/* Header */
+.menu-wrapper {
+		overflow: hidden;
+		height: 52px;
+		margin-bottom: 2em;
+		background: #000000;
+}
+
+/*Page headers*/
+.ui.header{
+		background: -webkit-linear-gradient(#811217, #c1272d);
+
+
+}
+
+/*page titles*/
+.ui-title{
+		color:white;
+		font: normal small-caps bold 34px "Charlemagne Std";
+			
+			}
+
+
+/*all other titles*/
+.title{
+		font-size:50px;
+		text-align:center;
+		color:white;
+
+}
+
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////*/
+/*Stylings for the headers and paragraphs as listed*/
+h1, h2, h3 {
+		margin: 5px;
+		padding: 5px;
+		text-transform: uppercase;
+		color:white;
+		font: normal small-caps bold 34px "Georgia", serif;
+		text-align:center;
+}
+
+h1 {
+		font-size: 2em;
+		color:white;
+	
+}
+
+h2 {
+		font-size: 2.8em;
+}
+
+h3 {
+		font-size: 1.6em;
+}
+
+h4{
+		font-size:20px;
+		color:white;
+		text-align:center;
+
+}
+
+h5 {
+		text-align:center;
+		color:white;
+		font-size:20px;
+
+}
+
+p{
+		color:black;
+		padding-top: 5px;  
+      	padding-bottom: 5px;  
+      	padding-right: 5px;  
+      	padding-left: 30px; 
+
+}
+
+p1{
+		color:green;
+		padding-left:425px;
+
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+/*List color*/
+li{
+		color:brown;
+		
+		padding-top: 5px;  
+      	padding-bottom: 5px;  
+      	padding-right: 5px;  
+      	padding-left: 30px; 
+
+}
+
+/*My Geo text on landing page*/
+div.layout{
+		text-align: center;
+
+}
+
+/*My Geo text stylings*/
+div.myGeoText{
+		font-family:"chalkduster", Times, serif;
+		font-size:42px;
+		color:white;
+  		text-align: left;
+  		width: 200px;
+  		display: block;
+  		margin-left: auto;
+  		margin-right: auto;
+		padding-top:10px;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////*/
+/*stylings for the buttons*/
+.button {
+	
+		-moz-box-shadow:inset 0px 1px 0px 0px #A62500;
+		-webkit-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+		box-shadow:inset 0px 1px 0px 0px #fce2c1;
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25) );
+		background:-moz-linear-gradient( center top, #ffc477 5%, #fb9e25 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25');
+		background-color:#ffc477;
+		-moz-border-radius:6px;
+		-webkit-border-radius:6px;
+		border-radius:6px;
+		border:1px solid #eeb44f;
+		color:#ffffff;
+		font-family:arial;
+		font-size:15px;
+		font-weight:bold;
+		padding:6px 24px;
+		text-decoration:none;
+		text-shadow:1px 1px 0px #cc9f52;
+		
+		
+}
+
+/*Button text*/
+span.ui-btn-text{
+
+		color:white;
+
+}
+
+/*Button States*/
+.button:hover {
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477) );
+		background:-moz-linear-gradient( center top, #fb9e25 5%, #ffc477 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
+		background-color:#fb9e25;
+}.button:active {
+		position:relative;
+		top:1px;
+}
+ 
+ 
+/*home page button*/
+.homeButton {
+		-moz-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+		-webkit-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+		box-shadow:inset 0px 1px 0px 0px #fce2c1;
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25) );
+		background:-moz-linear-gradient( center top, #ffc477 5%, #fb9e25 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25');
+		background-color:#ffc477;
+		-moz-border-radius:6px;
+		-webkit-border-radius:6px;
+		border-radius:6px;
+		border:1px solid #eeb44f;
+		display:inline-block;
+		color:#ffffff;
+		font-family:arial;
+		font-size:15px;
+		font-weight:bold;
+		padding:6px 24px;
+		text-decoration:none;
+		text-shadow:1px 1px 0px #cc9f52;
+		
+}.homeButton:hover {
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477) );
+		background:-moz-linear-gradient( center top, #fb9e25 5%, #ffc477 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
+		background-color:#fb9e25;
+}
+
+.homeButton:active {
+		position:relative;
+		top:1px;
+}
+
+
+
+ 
+/*Hover Styles*/
+a.button:hover {
+    	background: #3d7a80;
+    	background: -webkit-linear-gradient(top, #3d7a80, #2f5f63);
+    	background: -moz-linear-gradient(top, #3d7a80, #2f5f63);
+    	background: -o-linear-gradient(top, #3d7a80, #2f5f63);
+    	background: -ms-linear-gradient(top, #3d7a80, #2f5f63);
+    	background: linear-gradient(top, #3d7a80, #2f5f63);
+}
+
+/*Stylings for mouse hover*/
+a:hover {
+}
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/*Images and responsive design*/
+
+
+/*images for buttons */
+.sectionImages{
+		width:100px;
+		height:100px;
+		display: block;
+  		margin-left: auto;
+  		margin-right: auto;
+		padding-bottom:50px;
+	
+}
+
+
+environment.png{
+	max-width:100%;
+
+}
+
+acc.png{
+	max-width:100%;
+
+}
+
+angleCompass.png{
+	max-width:100%;
+
+}
+
+books.png{
+	max-width:100%;
+
+}
+
+compass.png{
+	max-width:100%;
+
+}
+
+geo.png{
+	max-width:100%;
+
+}
+
+goldCompass.jpeg{
+	max-width:100%;
+
+}
+localWeather.png{
+	max-width:100%;
+
+}
+
+redCompass.png{
+	max-width:100%;
+
+}
+
+twitterIcon.png{
+	max-width:100%;
+
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////*/
+
+			
+
+

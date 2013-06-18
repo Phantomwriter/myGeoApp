@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+<title>Cómo admitir varios tamaños de pantalla | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../../";
+  
+  var devsite = false;
+  
+</script>
+<script src="../../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script src="../../../../navtree_data.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../../index.html">
+            <img src="../../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../../design/index.html"
+                  zh-TW-lang="設計"
+                  zh-CN-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../../develop/index.html"
+                  zh-TW-lang="開發"
+                  zh-CN-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../../distribute/index.html"
+                  zh-TW-lang="發佈"
+                  zh-CN-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../../')" 
+onkeyup="return search_changed(event, false, '../../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+  <div id="search_filtered_wrapper">
+    <div id="search_filtered_div" class="no-display">
+        <ul id="search_filtered">
+        </ul>
+    </div>
+  </div>
+  
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../../training/index.html"
+                          zh-TW-lang="訓練課程"
+                          zh-CN-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../../guide/components/index.html"
+                          zh-TW-lang="API 指南"
+                          zh-CN-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../../reference/packages.html"
+                          zh-TW-lang="參考資源"
+                          zh-CN-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../../tools/index.html"
+                          zh-TW-lang="相關工具"
+                          zh-CN-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../../google/index.html">Google Services</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+    
+
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../../training/index.html"
+                  zh-TW-lang="訓練課程"
+                  zh-CN-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../../guide/components/index.html"
+                  zh-TW-lang="API 指南"
+                  zh-CN-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../../reference/packages.html"
+                  zh-TW-lang="參考資源"
+                  zh-CN-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../../tools/index.html"
+                  zh-TW-lang="相關工具"
+                  zh-CN-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../../google/index.html"
+                  >Google Services</a>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+<ul id="nav">
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../../../training/index.html">
+        Getting Started
+      </a>
+    </div>
+
+    <ul>
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/basics/firstapp/index.html"
+             description=
+             "After you've installed the Android SDK, start with this class
+             to learn the basics about Android app development."
+            >Building Your First App</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/basics/firstapp/creating-project.html">
+            Creating an Android Project
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/firstapp/running-app.html">
+            Running Your Application
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/firstapp/building-ui.html">
+            Building a Simple User Interface
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/firstapp/starting-activity.html">
+            Starting Another Activity
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/basics/activity-lifecycle/index.html"
+             description=
+             "How Android activities live and die and how to create
+             a seamless user experience by implementing lifecycle callback methods."
+            >Managing the Activity Lifecycle</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/basics/activity-lifecycle/starting.html">
+            Starting an Activity
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/activity-lifecycle/pausing.html">
+            Pausing and Resuming an Activity
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/activity-lifecycle/stopping.html">
+            Stopping and Restarting an Activity
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/activity-lifecycle/recreating.html">
+            Recreating an Activity
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/basics/supporting-devices/index.html"
+             description=
+             "How to build your app with alternative resources that provide an
+             optimized user experience on multiple device form factors using a single APK."
+            >Supporting Different Devices</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/basics/supporting-devices/languages.html">
+            Supporting Different Languages
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/supporting-devices/screens.html">
+            Supporting Different Screens
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/supporting-devices/platforms.html">
+            Supporting Different Platform Versions
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/basics/fragments/index.html"
+             description=
+             "How to build a user interface for your app that is flexible enough
+             to present multiple UI components on large screens and a more constrained set of
+             UI components on smaller screens&mdash;essential for building a single APK for both
+             phones and tablets."
+            >Building a Dynamic UI with Fragments</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/basics/fragments/support-lib.html">
+            Using the Support Library
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/fragments/creating.html">
+            Creating a Fragment
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/fragments/fragment-ui.html">
+            Building a Flexible UI
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/fragments/communicating.html">
+            Communicating with Other Fragments
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../training/basics/data-storage/index.html"
+             description=
+             "How to save data on the device, whether it's temporary files, downloaded
+             app assets, user media, structured data, or something else."
+            >Saving Data</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/basics/data-storage/shared-preferences.html">
+            Saving Key-Value Sets
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/data-storage/files.html">
+            Saving Files
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/data-storage/databases.html">
+            Saving Data in SQL Databases
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/basics/intents/index.html"
+             description=
+             "How to build a user experience that leverages other apps available
+             on the device to perform advanced user tasks, such as capture a photo or view
+             an address on a map."
+            >Interacting with Other Apps</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/basics/intents/sending.html">
+            Sending the User to Another App
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/intents/result.html">
+            Getting a Result from the Activity
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/intents/filters.html">
+            Allowing Other Apps to Start Your Activity
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/sharing/index.html"
+             description=
+             "How to take your app interaction to the next level by sharing
+             information with other apps, receive information back, and provide a simple and
+             scalable way to perform Share actions with user content."
+            >Sharing Content</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/sharing/send.html">
+            Sending Content to Other Apps
+          </a>
+          </li>
+          <li><a href="../../../../training/sharing/receive.html">
+            Receiving Content from Other Apps
+          </a>
+          </li>
+          <li><a href="../../../../training/sharing/shareaction.html">
+            Adding an Easy Share Action
+          </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li><!-- end getting started -->
+  
+  
+  
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../../../training/building-multimedia.html">
+      <span class="small">Building Apps with</span><br/>Multimedia
+      </a>
+    </div>
+    <ul>
+      
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/managing-audio/index.html"
+             description=
+             "How to respond to hardware audio key presses, request audio focus
+             when playing audio, and respond appropriately to changes in audio focus."
+            >Managing Audio Playback</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/managing-audio/volume-playback.html">
+            Controlling Your App's Volume and Playback
+          </a>
+          </li>
+          <li><a href="../../../../training/managing-audio/audio-focus.html">
+            Managing Audio Focus
+          </a>
+          </li>
+          <li><a href="../../../../training/managing-audio/audio-output.html">
+            Dealing with Audio Output Hardware
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/camera/index.html"
+             description=
+             "How to leverage existing camera apps on the user's device to capture
+             photos or control the camera hardware directly and build your own camera app."
+            >Capturing Photos</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/camera/photobasics.html">
+            Taking Photos Simply
+          </a>
+          </li>
+          <li><a href="../../../../training/camera/videobasics.html">
+            Recording Videos Simply
+          </a>
+          </li>
+          <li><a href="../../../../training/camera/cameradirect.html">
+            Controlling the Camera
+          </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <!-- End multimedia -->
+      
+      
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../../../training/building-graphics.html">
+      <span class="small">Building Apps with</span><br/>Graphics &amp; Animation
+      </a>
+    </div>
+    <ul>
+      
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/displaying-bitmaps/index.html"
+             description=
+             "How to load and process bitmaps while keeping your user interface
+             responsive and avoid exceeding memory limits."
+            >Displaying Bitmaps Efficiently</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/displaying-bitmaps/load-bitmap.html">
+            Loading Large Bitmaps Efficiently
+          </a>
+          </li>
+          <li><a href="../../../../training/displaying-bitmaps/process-bitmap.html">
+            Processing Bitmaps Off the UI Thread
+          </a>
+          </li>
+          <li><a href="../../../../training/displaying-bitmaps/cache-bitmap.html">
+            Caching Bitmaps
+          </a>
+          </li>
+          <li><a href="../../../../training/displaying-bitmaps/display-bitmap.html">
+            Displaying Bitmaps in Your UI
+          </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/graphics/opengl/index.html"
+             description=
+             "How to create OpenGL graphics within the Android app framework
+             and respond to touch input."
+            >Displaying Graphics with OpenGL ES</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/graphics/opengl/environment.html">
+            Building an OpenGL ES Environment
+          </a>
+          </li>
+          <li><a href="../../../../training/graphics/opengl/shapes.html">
+            Defining Shapes
+          </a>
+          </li>
+          <li><a href="../../../../training/graphics/opengl/draw.html">
+            Drawing Shapes
+          </a>
+          </li>
+          <li><a href="../../../../training/graphics/opengl/projection.html">
+            Applying Projection and Camera Views
+          </a>
+          </li>
+          <li><a href="../../../../training/graphics/opengl/motion.html">
+            Adding Motion
+          </a>
+          </li>
+          <li><a href="../../../../training/graphics/opengl/touch.html">
+            Responding to Touch Events
+          </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../training/animation/index.html"
+             description=
+             "How to add transitional animations to your user interface.">
+            Adding Animations
+          </a></div>
+        <ul>
+          <li><a href="../../../../training/animation/crossfade.html">
+            Crossfading Two Views
+          </a>
+          </li>
+          <li><a href="../../../../training/animation/screen-slide.html">
+            Using ViewPager for Screen Slide
+          </a>
+          </li>
+          <li><a href="../../../../training/animation/cardflip.html">
+            Displaying Card Flip Animations
+          </a>
+          </li>
+          <li><a href="../../../../training/animation/zoom.html">
+            Zooming a View
+          </a>
+          </li>
+          <li><a href="../../../../training/animation/layout.html">
+            Animating Layout Changes
+          </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <!-- End graphics and animation -->
+      
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../../../training/building-connectivity.html">
+      <span class="small">Building Apps with</span><br/>
+              Connectivity &amp; the Cloud
+      </a>
+    </div>
+    <ul>
+
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/connect-devices-wirelessly/index.html"
+             description=
+             "How to find and connect to local devices using Network Service
+             Discovery and Wi-Fi Direct in order to create peer-to-peer connections."
+             >Connecting Devices Wirelessly</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/connect-devices-wirelessly/nsd.html">
+            Using Network Service Discovery
+          </a>
+          </li>
+          <li><a href="../../../../training/connect-devices-wirelessly/wifi-direct.html">
+            Connecting with Wi-Fi Direct
+          </a>
+          </li>
+          <li><a href="../../../../training/connect-devices-wirelessly/nsd-wifi-direct.html">
+            Using Wi-Fi Direct for Service Discovery
+          </a>
+          </li>
+        </ul>
+      </li>
+      
+       <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/basics/network-ops/index.html"
+             description=
+             "How to create a network connection, monitor the connection for changes
+             in connectivity, and perform transactions with XML data."
+            >Performing Network Operations</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/basics/network-ops/connecting.html">
+            Connecting to the Network
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/network-ops/managing.html">
+            Managing Network Usage
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/network-ops/xml.html">
+            Parsing XML Data
+          </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/efficient-downloads/index.html"
+             description=
+             "How to minimize your app's impact on the battery when performing downloads
+             and other network transactions."
+            >Transferring Data Without Draining the Battery</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/efficient-downloads/efficient-network-access.html">
+            Optimizing Downloads for Efficient Network Access
+          </a>
+          </li>
+          <li><a href="../../../../training/efficient-downloads/regular_updates.html">
+            Minimizing the Effect of Regular Updates
+          </a>
+          </li>
+          <li><a href="../../../../training/efficient-downloads/redundant_redundant.html">
+            Redundant Downloads are Redundant
+          </a>
+          </li>
+          <li><a href="../../../../training/efficient-downloads/connectivity_patterns.html">
+            Modifying Patterns Based on the Connectivity Type
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/cloudsync/index.html"
+             description=
+             "How to sync and back up app and user data to remote web services in the
+              cloud and how to restore the data back to multiple devices."
+            >Syncing to the Cloud</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/cloudsync/backupapi.html">
+            Using the Backup API
+          </a>
+          </li>
+          <li><a href="../../../../training/cloudsync/gcm.html">
+            Making the Most of Google Cloud Messaging
+          </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <!-- End connectivity and cloud -->
+  
+  
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../../../training/building-userinfo.html">
+      <span class="small">Building Apps with</span><br/>
+              User Info &amp; Location
+      </a>
+    </div>
+    <ul>
+    
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/id-auth/index.html"
+             description=
+             "How to remember the user by account, authenticate the user, acquire user permission
+             for the user's online data, and create custom accounts on the device."
+            >Remembering Users</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/id-auth/identify.html">
+            Remembering Your User
+          </a>
+          </li>
+          <li><a href="../../../../training/id-auth/authenticate.html">
+            Authenticating to OAuth2 Services
+          </a>
+          </li>
+          <li><a href="../../../../training/id-auth/custom_auth.html">
+            Creating a Custom Account Type
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/basics/location/index.html"
+             description=
+             "How to add location-aware features to your app by aqcuiring the user's current
+             location."
+            >Making Your App Location Aware</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/basics/location/locationmanager.html">
+            Using the Location Manager
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/location/currentlocation.html">
+            Obtaining the Current Location
+          </a>
+          </li>
+          <li><a href="../../../../training/basics/location/geocoding.html">
+            Displaying a Location Address
+          </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <!-- End privacy and location -->
+      
+      
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../../../training/best-ux.html">
+      <span class="small">Best Practices for</span><br/>
+              User Experience &amp; UI
+      </a>
+    </div>
+    <ul>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/design-navigation/index.html"
+             description=
+             "How to plan your app's screen hierarchy and forms of navigation so users can
+             effectively and intuitively traverse your app content using various navigation
+             patterns."
+            >Designing Effective Navigation</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/design-navigation/screen-planning.html">
+            Planning Screens and Their Relationships
+          </a>
+          </li>
+          <li><a href="../../../../training/design-navigation/multiple-sizes.html">
+            Planning for Multiple Touchscreen Sizes
+          </a>
+          </li>
+          <li><a href="../../../../training/design-navigation/descendant-lateral.html">
+            Providing Descendant and Lateral Navigation
+          </a>
+          </li>
+          <li><a href="../../../../training/design-navigation/ancestral-temporal.html">
+            Providing Ancestral and Temporal Navigation
+          </a>
+          </li>
+          <li><a href="../../../../training/design-navigation/wireframing.html">
+            Putting it All Together: Wireframing the Example App
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/implementing-navigation/index.html"
+             description=
+             "How to implement various navigation patterns such as swipe views and up navigation."
+            >Implementing Effective Navigation</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/implementing-navigation/lateral.html">
+            Implementing Lateral Navigation
+          </a>
+          </li>
+          <li><a href="../../../../training/implementing-navigation/ancestral.html">
+            Implementing Ancestral Navigation
+          </a>
+          </li>
+          <li><a href="../../../../training/implementing-navigation/temporal.html">
+            Implementing Temporal Navigation
+          </a>
+          </li>
+          <li><a href="../../../../training/implementing-navigation/descendant.html">
+            Implementing Descendant Navigation
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+          <div class="nav-section-header">
+              <a href="../../../../training/notify-user/index.html"
+                 description=
+                 "How to display messages called notifications outside of
+                 your application's UI."
+               >Notifying the User</a>
+          </div>
+          <ul>
+              <li>
+                  <a href="../../../../training/notify-user/build-notification.html">
+                  Building a Notification
+                  </a>
+              </li>
+              <li>
+                  <a href="../../../../training/notify-user/navigation.html">
+                  Preserving Navigation when Starting an Activity
+                  </a>
+              </li>
+              <li>
+                  <a href="../../../../training/notify-user/managing.html">
+                  Updating Notifications
+                  </a>
+              </li>
+              <li>
+                  <a href="../../../../training/notify-user/expanded.html">
+                  Using Big View Styles
+                  </a>
+              </li>
+              <li>
+                  <a href="../../../../training/notify-user/display-progress.html">
+                  Displaying Progress in a Notification
+                  </a>
+              </li>
+          </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/search/index.html"
+             description=
+             "How to properly add a search interface to your app and create a searchable database."
+            >Adding Search Functionality</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/search/setup.html">
+            Setting up the Search Interface
+          </a>
+          </li>
+          <li><a href="../../../../training/search/search.html">
+            Storing and Searching for Data
+          </a>
+          </li>
+          <li><a href="../../../../training/search/backward-compat.html">
+            Remaining Backward Compatible
+          </a>
+          </li>
+        </ul>
+      </li>
+      
+      
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="/training/multiscreen/index.html"
+             zh-CN-lang="针对多种屏幕进行设计"
+             ja-lang="複数画面のデザイン"
+             es-lang="Cómo diseñar aplicaciones para varias pantallas"
+             description=
+             "How to build a user interface that's flexible enough to
+             fit perfectly on any screen and how to create different interaction
+             patterns that are optimized for different screen sizes."
+            >Designing for Multiple Screens</a>
+        </div>
+        <ul>
+          <li><a href="/training/multiscreen/screensizes.html"
+            zh-CN-lang="支持各种屏幕尺寸"
+            ko-lang="다양한 화면 크기 지원"
+            ja-lang="さまざまな画面サイズのサポート"
+            es-lang="Cómo admitir varios tamaños de pantalla"
+            >Supporting Different Screen Sizes</a>
+          </li>
+          <li><a href="/training/multiscreen/screendensities.html"
+            zh-CN-lang="支持各种屏幕密度"
+            ja-lang="さまざまな画面密度のサポート"
+            es-lang="Cómo admitir varias densidades de pantalla"
+            >Supporting Different Screen Densities</a>
+          </li>
+          <li><a href="/training/multiscreen/adaptui.html"
+            zh-CN-lang="实施自适应用户界面流程"
+            ja-lang="順応性のある UI フローの実装"
+            es-lang="Cómo implementar interfaces de usuario adaptables"
+            >Implementing Adaptive UI Flows</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../training/tv/index.html"
+             description=
+             "How to optimize your app's user interface and user input for
+             the &quot;ten foot experience&quot; of a TV screen."
+            >Designing for TV</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/tv/optimizing-layouts-tv.html">
+            Optimizing Layouts for TV
+          </a>
+          </li>
+          <li><a href="../../../../training/tv/optimizing-navigation-tv.html">
+            Optimizing Navigation for TV
+          </a>
+          </li>
+          <li><a href="../../../../training/tv/unsupported-features-tv.html">
+            Handling Features Not Supported on TV
+          </a>
+          </li>
+        </ul>
+      </li>
+      
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/custom-views/index.html"
+             description=
+             "How to build custom UI widgets that are interactive and smooth."
+            >Creating Custom Views</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/custom-views/create-view.html">
+            Creating a Custom View Class
+          </a>
+          </li>
+          <li><a href="../../../../training/custom-views/custom-drawing.html">
+            Implementing Custom Drawing
+          </a>
+          </li>
+          <li><a href="../../../../training/custom-views/making-interactive.html">
+            Making the View Interactive
+          </a>
+          </li>
+          <li><a href="../../../../training/custom-views/optimizing-view.html">
+            Optimizing the View
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/backward-compatible-ui/index.html"
+             description=
+             "How to use UI components and other APIs from the more recent versions of Android
+             while remaining compatible with older versions of the platform."
+            >Creating Backward-Compatible UIs</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/backward-compatible-ui/abstracting.html">
+            Abstracting the New APIs
+          </a>
+          </li>
+          <li><a href="../../../../training/backward-compatible-ui/new-implementation.html">
+            Proxying to the New APIs
+          </a>
+          </li>
+          <li><a href="../../../../training/backward-compatible-ui/older-implementation.html">
+            Creating an Implementation with Older APIs
+          </a>
+          </li>
+          <li><a href="../../../../training/backward-compatible-ui/using-component.html">
+            Using the Version-Aware Component
+          </a>
+          </li>
+        </ul>
+      </li>
+      
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/accessibility/index.html"
+             description=
+             "How to make your app accessible to users with vision
+             impairment or other physical disabilities."
+            >Implementing Accessibility</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/accessibility/accessible-app.html">
+            Developing Accessible Applications
+          </a>
+          </li>
+          <li><a href="../../../../training/accessibility/service.html">
+            Developing Accessibility Services
+          </a>
+          </li>
+        </ul>
+      </li>
+      
+    </ul>
+  </li>
+  <!-- End best UX and UI -->
+  
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../../../training/best-user-input.html">
+      <span class="small">Best Practices for</span><br/>
+              User Input
+      </a>
+    </div>
+    <ul>
+         
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/gestures/index.html"
+             description=
+             "How to write apps that allow users to interact with the touch screen via touch gestures."
+            >Using Touch Gestures</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/gestures/detector.html">
+            Detecting Common Gestures
+          </a>
+          </li>
+          <li><a href="../../../../training/gestures/movement.html">
+            Tracking Movement
+          </a>
+          </li>
+          <li><a href="../../../../training/gestures/scroll.html">
+            Animating a Scroll Gesture
+          </a>
+          </li>
+          <li><a href="../../../../training/gestures/multi.html">
+            Handling Multi-Touch Gestures
+          </a>
+          </li>
+          <li><a href="../../../../training/gestures/scale.html">
+            Dragging and Scaling
+          </a>
+          </li>
+          <li><a href="../../../../training/gestures/viewgroup.html">
+            Managing Touch Events in a ViewGroup
+          </a>
+          </li>
+        </ul>
+      </li>
+      
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/keyboard-input/index.html"
+             description=
+             "How to specify the appearance and behaviors of soft input methods (such
+             as on-screen keyboards) and how to optimize the experience with
+             hardware keyboards."
+            >Handling Keyboard Input</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/keyboard-input/style.html">
+            Specifying the Input Method Type
+          </a>
+          </li>
+          <li><a href="../../../../training/keyboard-input/visibility.html">
+            Handling Input Method Visibility
+          </a>
+          </li>
+          <li><a href="../../../../training/keyboard-input/navigation.html">
+            Supporting Keyboard Navigation
+          </a>
+          </li>
+          <li><a href="../../../../training/keyboard-input/commands.html">
+            Handling Keyboard Actions
+          </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li> <!-- end of User Input -->    
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../../../training/best-performance.html">
+      <span class="small">Best Practices for</span><br/>
+              Performance
+      </a>
+    </div>
+    <ul>
+      
+      <li>
+        <a href="../../../../training/articles/perf-tips.html"
+           description=
+           "How to optimize your app's performance in various ways to improve its
+           responsiveness and battery efficiency."
+          >Performance Tips</a>
+      </li>
+      
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/improving-layouts/index.html"
+             description=
+             "How to identify problems in your app's layout performance and improve the UI
+             responsiveness."
+            >Improving Layout Performance</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/improving-layouts/optimizing-layout.html">
+            Optimizing Layout Hierarchies
+          </a>
+          </li>
+          <li><a href="../../../../training/improving-layouts/reusing-layouts.html">
+            Re-using Layouts with &lt;include/&gt;
+          </a>
+          </li>
+          <li><a href="../../../../training/improving-layouts/loading-ondemand.html">
+            Loading Views On Demand
+          </a>
+          </li>
+          <li><a href="../../../../training/improving-layouts/smooth-scrolling.html">
+            Making ListView Scrolling Smooth
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/run-background-service/index.html"
+             description=
+             "How to improve UI performance and responsiveness by sending work to a
+             Service running in the background"
+            >Running in a Background Service</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/run-background-service/create-service.html">
+            Creating a Background Service
+          </a>
+          </li>
+          <li><a href="../../../../training/run-background-service/send-request.html">
+            Sending Work Requests to the Background Service
+          </a>
+          </li>
+          <li><a href="../../../../training/run-background-service/report-status.html">
+            Reporting Work Status
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/load-data-background/index.html"
+             description="How to use CursorLoader to query data without
+             affecting UI responsiveness."
+            >Loading Data in the Background</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/load-data-background/setup-loader.html">
+            Running a Query with a CursorLoader</a>
+          </li>
+          <li><a href="../../../../training/load-data-background/handle-results.html">
+            Handling the Results</a>
+          </li>
+        </ul>
+      </li>
+      
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="/training/monitoring-device-state/index.html"
+             zh-CN-lang="优化电池使用时间"
+             ja-lang="電池消費量の最適化"
+             es-lang="Cómo optimizar la duración de la batería"
+             description=
+             "How to minimize the amount of power your app requires by adapting to current
+             power conditions and performing power-hungry tasks at proper intervals."
+            >Optimizing Battery Life</a>
+        </div>
+        <ul>
+          <li><a href="/training/monitoring-device-state/battery-monitoring.html"
+            zh-CN-lang="监控电池电量和充电状态"
+            ja-lang="電池残量と充電状態の監視"
+            es-lang="Cómo controlar el nivel de batería y el estado de carga"
+            >Monitoring the Battery Level and Charging State</a>
+          </li>
+          <li><a href="/training/monitoring-device-state/docking-monitoring.html"
+            zh-CN-lang="确定和监控基座对接状态和类型"
+            ja-lang="ホルダーの装着状態とタイプの特定と監視"
+            es-lang="Cómo determinar y controlar el tipo de conector y el estado de la conexión"
+            >Determining and Monitoring the Docking State and Type</a>
+          </li>
+          <li><a href="/training/monitoring-device-state/connectivity-monitoring.html"
+            zh-CN-lang="确定和监控网络连接状态"
+            ja-lang="接続状態の特定と監視"
+            es-lang="Cómo determinar y controlar el estado de la conectividad"
+            >Determining and Monitoring the Connectivity Status</a>
+          </li>
+          <li><a href="/training/monitoring-device-state/manifest-receivers.html"
+            zh-CN-lang="根据需要操作广播接收器"
+            ja-lang="オンデマンドでのブロードキャスト レシーバ操作"
+            es-lang="Cómo manipular los receptores de emisión bajo demanda"
+            >Manipulating Broadcast Receivers On Demand</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/multiple-threads/index.html"
+             description=
+             "How to improve the performance and scalability of long-running operations by
+              dispatching work to multiple threads.">
+             Sending Operations to Multiple Threads</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/multiple-threads/define-runnable.html">
+            Specifying the Code to Run on a Thread
+          </a>
+          </li>
+          <li><a href="../../../../training/multiple-threads/create-threadpool.html">
+            Creating a Manager for Multiple Threads
+          </a>
+          </li>
+          <li><a href="../../../../training/multiple-threads/run-code.html">
+            Running Code on a Thread Pool Thread
+          </a>
+          </li>
+          <li><a href="../../../../training/multiple-threads/communicate-ui.html">
+            Communicating with the UI Thread
+          </a>
+          </li>
+        </ul>
+      </li>
+      
+      <li>
+        <a href="../../../../training/articles/perf-anr.html"
+           description=
+           "How to keep your app responsive to user interaction so the UI does not lock-up and
+           display an &quot;Application Not Responding&quot; dialog."
+          >Keeping Your App Responsive</a>
+      </li>
+      
+      <li>
+        <a href="../../../../training/articles/perf-jni.html"
+           description=
+           "How to efficiently use the Java Native Interface with the Android NDK."
+          >JNI Tips</a>
+      </li>
+      <li>
+        <a href="../../../../training/articles/smp.html"
+           description=
+           "Tips for coding Android apps on symmetric multiprocessor systems."
+          >SMP Primer for Android</a>
+      </li>
+    </ul>
+  </li> <!-- end of Performance -->
+      
+      
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../../../training/best-security.html">
+      <span class="small">Best Practices for</span><br/>
+              Security &amp; Privacy
+      </a>
+    </div>
+    <ul>
+
+      <li>
+        <a href="../../../../training/articles/security-tips.html"
+           description=
+           "How to perform various tasks and keep your app's data and your user's data secure."
+          >Security Tips</a>
+      </li>
+      
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/enterprise/index.html"
+             description=
+             "How to implement device management policies for enterprise-oriented apps."
+            >Developing for Enterprise</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/enterprise/device-management-policy.html">
+            Enhancing Security with Device Management Policies
+          </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <!-- End security and user info -->
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../../../training/distribute.html">
+      <span class="small">Using Google Play to</span><br/>
+              Distribute &amp; Monetize
+      </a>
+    </div>
+    <ul>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../../training/in-app-billing/index.html"
+         description="How to sell in-app products from your application using In-app Billing.">
+            Selling In-app Products
+          </a></div>
+        <ul>
+          <li><a href="../../../../training/in-app-billing/preparing-iab-app.html">
+            <span class="en">Preparing Your App</span>
+          </a>
+          </li>
+          <li><a href="../../../../training/in-app-billing/list-iab-products.html">
+            <span class="en">Establishing Products for Sale</span>
+          </a>
+          </li>
+          <li><a href="../../../../training/in-app-billing/purchase-iab-products.html">
+            <span class="en">Purchasing Products</span>
+          </a>
+          </li>
+          <li><a href="../../../../training/in-app-billing/test-iab-app.html">
+            <span class="en">Testing Your App</span>
+          </a>
+          </li>
+        </ul>
+      </li>
+      
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/multiple-apks/index.html"
+             description=
+             "How to publish your app on Google Play with separate APKs that target
+             different devices, while using a single app listing."
+            >Maintaining Multiple APKs</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/multiple-apks/api.html">
+            Creating Multiple APKs for Different API Levels
+          </a>
+          </li>
+          <li><a href="../../../../training/multiple-apks/screensize.html">
+            Creating Multiple APKs for Different Screen Sizes
+          </a>
+          </li>
+          <li><a href="../../../../training/multiple-apks/texture.html">
+            Creating Multiple APKs for Different GL Textures
+          </a>
+          </li>
+          <li><a href="../../../../training/multiple-apks/multiple.html">
+            Creating Multiple APKs with 2+ Dimensions
+          </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../training/monetization/index.html"
+             description=
+             "How to implement monetization strategies for your app without compromising
+             the user experience."
+            >Monetizing Your App</a>
+        </div>
+        <ul>
+          <li><a href="../../../../training/monetization/ads-and-ux.html">
+            Advertising without Compromising User Experience
+          </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <!-- End best Publishing -->
+
+</ul><!-- nav -->
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+  <div class="layout-content-row content-header ">
+    <div class="layout-content-col span-7">
+      <h1 itemprop="name">Cómo admitir varios tamaños de pantalla</h1>
+      
+    </div>
+    
+      <div class="training-nav-top layout-content-col span-5" itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <a href="#" class="prev-page-link hide"
+            zh-TW-lang="上一堂課"
+            zh-CN-lang="上一课"
+            ru-lang="Предыдущий"
+            ko-lang="이전"
+            ja-lang="前へ"
+            es-lang="Anterior"               
+            >Previous</a>
+        <a href="#" class="next-page-link hide"
+            zh-TW-lang="下一堂課"
+            zh-CN-lang="下一课"
+            ru-lang="Следующий"
+            ko-lang="다음"
+            ja-lang="次へ"
+            es-lang="Siguiente"               
+            >Next</a>
+        <a href="#" class="start-class-link hide"
+            zh-TW-lang="開始上課"
+            zh-CN-lang="开始"
+            ru-lang="Начало работы"
+            ko-lang="시작하기"
+            ja-lang="開始する"
+            es-lang="Empezar"               
+            >Get started</a>
+      </div>
+    
+  </div>
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <!-- This is the training bar -->
+<div id="tb-wrapper"> 
+<div id="tb"> 
+
+<h2>En esta sección puedes aprender:</h2>
+<ol>
+  <li><a href="#TaskUseWrapMatchPar">Cómo utilizar los valores "wrap_content" y "match_parent"</a></li>
+  <li><a href="#TaskUseRelativeLayout">Cómo utilizar RelativeLayout</a></li>
+  <li><a href="#TaskUseSizeQuali">Cómo utilizar calificadores de tamaño</a></li>
+  <li><a href="#TaskUseSWQuali">Cómo utilizar el calificador de ancho más pequeño</a></li>
+  <li><a href="#TaskUseAliasFilters">Cómo utilizar alias de diseño</a></li>
+  <li><a href="#TaskUseOriQuali">Cómo utilizar calificadores de orientación</a></li>
+  <li><a href="#TaskUse9Patch">Cómo utilizar mapas de bits de la clase NinePatch</a></li>
+</ol>
+
+<h2>También puedes consultar:</h2>
+
+<ul>
+  <li><a href="../../../../guide/practices/screens_support.html">Cómo admitir varias pantallas</a></li>
+</ul>
+
+<h2>¡Pruébalo!</h2> 
+ 
+<div class="download-box"> 
+<a href="http://developer.android.com/shareables/training/NewsReader.zip" class="button">Descargar la aplicación de ejemplo</a>
+<p class="filename">NewsReader.zip</p> 
+</div> 
+ 
+</div> 
+</div> 
+
+<p>En esta sección se explica cómo admitir varios tamaños de pantalla. Para ello, sigue estos pasos:</p>
+<ul> 
+  <li>Asegúrate de que el diseño se haya ajustado correctamente al tamaño de la pantalla.</li> 
+  <li>Configura la pantalla con el diseño de interfaz adecuado.</li> 
+  <li>Asegúrate de aplicar el diseño adecuado a la pantalla correspondiente.</li>
+  <li>Utiliza el mapa de bits con la escala adecuada.</li> 
+</ul> 
+
+
+<h2 id="TaskUseWrapMatchPar">Cómo utilizar los valores "wrap_content" y "match_parent"</h2> 
+
+<p>Para garantizar que el diseño es flexible y que se adapta a varios tamaños de pantalla, debes utilizar los valores <code>"wrap_content"</code> y <code>"match_parent"</code> para la altura y el ancho de algunos componentes de la vista. Si utilizas <code>"wrap_content"</code>, el ancho o la altura de la vista se establece en el tamaño mínimo necesario para adaptar el contenido a esta vista, mientras que <code>"match_parent"</code> (también conocido como <code>"fill_parent"</code> antes del nivel 8 del API) provoca que el componente se amplíe hasta coincidir con el tamaño de la vista principal.</p>
+
+<p>Al utilizar los valores de tamaño <code>"wrap_content"</code> y <code>"match_parent"</code> en lugar de los tamaños predefinidos, las vistas pueden utilizar únicamente el espacio requerido para esa vista o ampliarse hasta rellenar el espacio disponible respectivamente. Por ejemplo:</p>
+
+<pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+    &lt;LinearLayout android:layout_width="match_parent" 
+                  android:id="@+id/linearLayout1"  
+                  android:gravity="center"
+                  android:layout_height="50dp"&gt;
+        &lt;ImageView android:id="@+id/imageView1" 
+                   android:layout_height="wrap_content"
+                   android:layout_width="wrap_content"
+                   android:src="@drawable/logo"
+                   android:paddingRight="30dp"
+                   android:layout_gravity="left"
+                   android:layout_weight="0" /&gt;
+        &lt;View android:layout_height="wrap_content" 
+              android:id="@+id/view1"
+              android:layout_width="wrap_content"
+              android:layout_weight="1" /&gt;
+        &lt;Button android:id="@+id/categorybutton"
+                android:background="@drawable/button_bg"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:layout_width="120dp"
+                style="@style/CategoryButtonStyle"/&gt;
+    &lt;/LinearLayout&gt;
+
+    &lt;fragment android:id="@+id/headlines" 
+              android:layout_height="fill_parent"
+              android:name="com.example.android.newsreader.HeadlinesFragment"
+              android:layout_width="match_parent" /&gt;
+&lt;/LinearLayout&gt;</pre>
+
+<p>Observa cómo se utilizan en el ejemplo los valores <code>"wrap_content"</code> y <code>"match_parent"</code> para los tamaños de los componentes en lugar de dimensiones específicas. Esto permite que el diseño se adapte correctamente a diferentes tamaños y orientaciones de la pantalla.</p>
+
+<p>Por ejemplo, esta es la apariencia del diseño en modo horizontal y vertical. Ten en cuenta que los tamaños de los componentes se adaptan automáticamente a la altura y al ancho:</p>
+
+<img src="../../../../images/training/layout-hvga.png" />
+<p class="img-caption"><strong>Figura 1.</strong> La aplicación de ejemplo News Reader en modo vertical (izquierda) y horizontal (derecha)</p>
+
+
+<h2 id="TaskUseRelativeLayout">Cómo utilizar RelativeLayout</h2> 
+
+<p>Puedes crear diseños de un cierto nivel de complejidad con instancias anidadas de <PH><code><a href="../../../../reference/android/widget/LinearLayout.html">LinearLayout</a></code></PH> y combinaciones de los valores de tamaño <code>"wrap_content"</code> y <code>"match_parent"</code>. Sin embargo, <PH><code><a href="../../../../reference/android/widget/LinearLayout.html">LinearLayout</a></code></PH> no te permite controlar con precisión las relaciones espaciales de las vistas secundarias; las vistas de <PH><code><a href="../../../../reference/android/widget/LinearLayout.html">LinearLayout</a></code></PH> simplemente se alinean en paralelo. Si quieres orientar las vistas secundarias de una forma que no sea una línea recta, a menudo la mejor solución es utilizar <PH><code><a href="../../../../reference/android/widget/RelativeLayout.html">RelativeLayout</a></code></PH>que te permite especificar el diseño según las relaciones espaciales entre los componentes. Por ejemplo, puedes alinear una vista secundaria en el lateral izquierdo y otra vista en el lateral derecho de la pantalla.</p>
+
+<p>Por ejemplo:</p>
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+    &lt;TextView
+        android:id="&#64;+id/label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Type here:"/&gt;
+    &lt;EditText
+        android:id="&#64;+id/entry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="&#64;id/label"/&gt;
+    &lt;Button
+        android:id="&#64;+id/ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="&#64;id/entry"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
+        android:text="OK" /&gt;
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="&#64;id/ok"
+        android:layout_alignTop="&#64;id/ok"
+        android:text="Cancel" /&gt;
+&lt;/RelativeLayout&gt;
+</pre>
+
+<p>La figura 2 indica cómo se muestra este diseño en una pantalla QVGA.</p>
+
+<img src="../../../../images/training/relativelayout1.png" />
+<p class="img-caption"><strong>Figura 2.</strong> Captura de pantalla de una pantalla QVGA (pantalla pequeña)</p>
+
+<p>La figura 3 indica cómo se muestra este diseño en una pantalla más grande.</p>
+
+<img src="../../../../images/training/relativelayout2.png" />
+<p class="img-caption"><strong>Figura 3.</strong> Captura de pantalla de una pantalla WSVGA (pantalla grande)</p>
+
+<p>Ten en cuenta que aunque el tamaño de los componentes es diferente, las relaciones espaciales se mantienen según se ha especificado con <PH><code><a href="../../../../reference/android/widget/RelativeLayout.LayoutParams.html">RelativeLayout.LayoutParams</a></code></PH>.</p>
+
+ 
+<h2 id="TaskUseSizeQuali">Cómo utilizar calificadores de tamaño</h2> 
+
+<p>Hay mucha diferencia entre un diseño flexible y un diseño relativo como el que se ha utilizado en las secciones anteriores. Aunque ambos diseños se adaptan a diferentes pantalla estirando el espacio dentro de los componentes y alrededor de los mismos, puede que no ofrezcan la mejor experiencia de usuario para cada tamaño de pantalla. Por tanto, tu aplicación no solo debe implementar los diseños flexibles, sino que también debe ofrecer varios diseños alternativos para diferentes configuraciones de pantalla. Para ello, se utilizan <a href="http://developer.android.com/guide/practices/screens_support.html#qualifiers">calificadores de configuración</a>, que permiten que el tiempo de ejecución seleccione el recurso adecuado en función de la configuración actual del dispositivo (por ejemplo, un diseño diferente para diferentes tamaños de pantalla).</p>
+
+<p>Por ejemplo, muchas aplicaciones implementan el patrón de "panel dual" para pantallas grandes (la aplicación mostraría una lista de elementos en un panel y el contenido en otro panel). Aunque los tablets y las televisiones son lo suficientemente grandes como para que los dos paneles aparezcan simultáneamente en la pantalla, las pantallas de los teléfonos tienen que mostrarlos por separado. Para implementar estos diseños, puedes utilizar los siguientes archivos:</p>
+
+<ul>
+  <li><code>res/layout/main.xml</code>, diseño de panel único (predeterminado):
+
+<pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;fragment android:id="@+id/headlines"
+              android:layout_height="fill_parent"
+              android:name="com.example.android.newsreader.HeadlinesFragment"
+              android:layout_width="match_parent" /&gt;
+&lt;/LinearLayout&gt;</pre>
+</li>
+  <li><code>res/layout-large/main.xml</code>, diseño de panel dual:
+
+<pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"&gt;
+    &lt;fragment android:id="@+id/headlines"
+              android:layout_height="fill_parent"
+              android:name="com.example.android.newsreader.HeadlinesFragment"
+              android:layout_width="400dp"
+              android:layout_marginRight="10dp"/&gt;
+    &lt;fragment android:id="@+id/article"
+              android:layout_height="fill_parent"
+              android:name="com.example.android.newsreader.ArticleFragment"
+              android:layout_width="fill_parent" /&gt;
+&lt;/LinearLayout&gt;</pre>
+</li>
+</ul>
+
+<p>Observa el calificador <code>large</code> en el nombre de directorio del segundo diseño. Este diseño se seleccionará en dispositivos con pantallas clasificadas como grandes (por ejemplo, tablets de 7" y superiores). El otro diseño (sin calificadores) se seleccionará en el caso de dispositivos más pequeños.</p>
+
+
+<h2 id="TaskUseSWQuali">Cómo utilizar el calificador de ancho mínimo</h2>
+
+<p>Una de las dificultades a las que se enfrentaron los desarrolladores con los dispositivos Android anteriores a la versión 3.2 fue el contenedor de tamaño de pantalla "grande". Algunos ejemplos de este tipo de dispositivo son el tablet Dell Streak, el tablet Galaxy Tab original y los tablets de 7" en general. Sin embargo, es posible que muchas aplicaciones quieran mostrar varios diseños para diferentes dispositivos de esta categoría (por ejemplo, para dispositivos de 5" y de 7"), aunque todos estos dispositivos se consideren de pantalla grande. Por esta razón, Android introdujo el calificador de "ancho mínimo" (entre otros) en Android 3.2.</p>
+
+<p>Este calificador te permite mostrar contenido en pantallas que tengan un ancho mínimo determinado en píxeles independientes de la densidad. Por ejemplo, el tablet típico de 7" tiene un ancho mínimo de 600 dp, por lo que si quieres que la interfaz de usuario sea de panel dual en esta pantalla (y una única lista en pantallas más pequeñas), puedes utilizar los mismos dos diseños de la sección anterior para los diseños de panel único y de panel dual, solo que en lugar de utilizar el calificador de tamaño <code>large</code>, debes utilizar <code>sw600dp</code> para indicar que el diseño de panel dual se utiliza con las pantallas cuyo ancho mínimo sea de 600 dp:</p>
+
+<ul>
+  <li><code>res/layout/main.xml</code>, diseño de panel único (predeterminado):
+
+<pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;fragment android:id="@+id/headlines"
+              android:layout_height="fill_parent"
+              android:name="com.example.android.newsreader.HeadlinesFragment"
+              android:layout_width="match_parent" /&gt;
+&lt;/LinearLayout&gt;</pre>
+</li>
+  <li><code>res/layout-sw600dp/main.xml</code>, diseño de panel dual:
+
+<pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"&gt;
+    &lt;fragment android:id="@+id/headlines"
+              android:layout_height="fill_parent"
+              android:name="com.example.android.newsreader.HeadlinesFragment"
+              android:layout_width="400dp"
+              android:layout_marginRight="10dp"/&gt;
+    &lt;fragment android:id="@+id/article"
+              android:layout_height="fill_parent"
+              android:name="com.example.android.newsreader.ArticleFragment"
+              android:layout_width="fill_parent" /&gt;
+&lt;/LinearLayout&gt;</pre>
+</li>
+</ul>
+
+<p>Esto significa que los dispositivos cuyo ancho mínimo sea igual o superior a 600 dp utilizarán el diseño <code>layout-sw600dp/main.xml</code> (panel dual), mientras que las pantallas más pequeñas utilizarán el diseño <code>layout/main.xml</code> (panel único).</p>
+
+<p>No obstante, esto no funcionará en los dispositivos anteriores a Android 3.2 porque no reconocen <code>sw600dp</code> como calificador de tamaño, por lo que también tendrás que seguir utilizando el calificador <code>large</code>. Por tanto, debes tener un archivo con el nombre <code>res/layout-large/main.xml</code> idéntico a <code>res/layout-sw600dp/main.xml</code>. En la siguiente sección, obtendrás información sobre una técnica que te permite evitar que se dupliquen los archivos de diseños.</p>
+
+
+<h2 id="TaskUseAliasFilters">Cómo utilizar alias de diseño</h2> 
+
+<p>El calificador de ancho mínimo solo está disponible en Android 3.2 o superior. Por tanto, tendrás que seguir utilizando los contenedores de tamaño abstractos (pequeño, normal, grande y extragrande) para que sean compatibles con versiones anteriores. Por ejemplo, si quieres que tu interfaz de usuario sea de panel único en teléfonos pero multipanel en tablets de 7", televisiones y otros dispositivos grandes, tendrás que utilizar los siguientes archivos:</p>
+
+<p><ul>
+<li><code>res/layout/main.xml:</code> diseño de panel único,</li>
+<li><code>res/layout-large:</code> diseño multipanel,</li>
+<li><code>res/layout-sw600dp:</code> diseño multipanel.</li>
+</ul></p>
+
+<p>Los dos últimos archivos son idénticos porque uno de ellos se utilizará con dispositivos Android 3.2 y el otro con tablets y televisiones que utilicen versiones anteriores de Android.</p>
+
+<p>Para evitar la duplicación del mismo archivo para tablets y televisiones (así como todos los problemas que esto conlleva), puedes utilizar archivos alias. Por ejemplo, puedes establecer los siguientes diseños:</p>
+
+<ul>
+<li><code>res/layout/main.xml</code>: diseño de panel único,</li>
+<li><code>res/layout/main_twopanes.xml</code>: diseño de panel dual.</li>
+</ul>
+
+<p>Añade estos dos archivos:</p>
+
+<p><ul>
+<li><code>res/values-large/layout.xml</code>:
+<pre>
+&lt;resources>
+    &lt;item name="main" type="layout">&#64;layout/main_twopanes&lt;/item>
+&lt;/resources>
+</pre>
+</li>
+
+<li><code>res/values-sw600dp/layout.xml</code>:
+<pre>
+&lt;resources>
+    &lt;item name="main" type="layout">&#64;layout/main_twopanes&lt;/item>
+&lt;/resources>
+</pre>
+
+</li>
+</ul></p>
+
+<p>Estos dos últimos archivos tienen el mismo contenido, pero en realidad no definen el diseño. Solo configuran <PH><code>main</code></PH> para que sea un alias de <PH><code>main_twopanes</code></PH>. Como los archivos tienen selectores <code>large</code> y <code>sw600dp</code>, se aplican a tablets y a televisiones independientemente de la versión de Android (las televisiones y los tablets anteriores a la versión 3.2 utilizarán
+<PH><code>large</code></PH>y las televisiones y los tablets posteriores a la versión 3.2 utilizarán <code>sw600dp</code>).</p>
+
+
+<h2 id="TaskUseOriQuali">Cómo utilizar calificadores de orientación</h2> 
+
+<p>Aunque algunos diseños se pueden utilizar tanto en modo horizontal como vertical, la mayoría de ellos pueden beneficiarse de los ajustes. A continuación, se indica cómo se comporta el diseño según cada tamaño y orientación de la pantalla en la aplicación de ejemplo News Reader:</p>
+
+<p><ul>
+<li><b>pantalla pequeña, vertical:</b> panel único con logotipo,</li>
+<li><b>pantalla pequeña, horizontal:</b> panel único con logotipo,</li>
+<li><b>tablet de 7", vertical:</b> panel único con barra de acciones,</li>
+<li><b>tablet de 7", horizontal:</b> panel dual ancho con barra de acciones,</li>
+<li><b>tablet de 10", vertical:</b> panel dual estrecho con barra de acciones,</li>
+<li><b>tablet de 10", horizontal:</b> panel dual ancho con barra de acciones,</li>
+<li><b>televisión, horizontal:</b> panel dual ancho con barra de acciones.</li>
+</ul></p>
+
+<p>Cada uno de estos diseños se establecen en un archivo XML en el directorio <code>res/layout/</code>. Para definir posteriormente las diferentes configuraciones de pantalla, la aplicación utiliza alias de diseño para asignarlos a cada configuración:</p>
+
+<p><code>res/layout/onepane.xml:</code></p>
+<pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;fragment android:id="@+id/headlines"
+              android:layout_height="fill_parent"
+              android:name="com.example.android.newsreader.HeadlinesFragment"
+              android:layout_width="match_parent" /&gt;
+&lt;/LinearLayout&gt;</pre>
+
+<p><code>res/layout/onepane_with_bar.xml:</code></p>
+<pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+    &lt;LinearLayout android:layout_width="match_parent" 
+                  android:id="@+id/linearLayout1"  
+                  android:gravity="center"
+                  android:layout_height="50dp"&gt;
+        &lt;ImageView android:id="@+id/imageView1" 
+                   android:layout_height="wrap_content"
+                   android:layout_width="wrap_content"
+                   android:src="@drawable/logo"
+                   android:paddingRight="30dp"
+                   android:layout_gravity="left"
+                   android:layout_weight="0" /&gt;
+        &lt;View android:layout_height="wrap_content" 
+              android:id="@+id/view1"
+              android:layout_width="wrap_content"
+              android:layout_weight="1" /&gt;
+        &lt;Button android:id="@+id/categorybutton"
+                android:background="@drawable/button_bg"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:layout_width="120dp"
+                style="@style/CategoryButtonStyle"/&gt;
+    &lt;/LinearLayout&gt;
+
+    &lt;fragment android:id="@+id/headlines" 
+              android:layout_height="fill_parent"
+              android:name="com.example.android.newsreader.HeadlinesFragment"
+              android:layout_width="match_parent" /&gt;
+&lt;/LinearLayout&gt;</pre>
+
+<p><code>res/layout/twopanes.xml</code>:</p>
+<pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"&gt;
+    &lt;fragment android:id="@+id/headlines"
+              android:layout_height="fill_parent"
+              android:name="com.example.android.newsreader.HeadlinesFragment"
+              android:layout_width="400dp"
+              android:layout_marginRight="10dp"/&gt;
+    &lt;fragment android:id="@+id/article"
+              android:layout_height="fill_parent"
+              android:name="com.example.android.newsreader.ArticleFragment"
+              android:layout_width="fill_parent" /&gt;
+&lt;/LinearLayout&gt;</pre>
+
+<p><code>res/layout/twopanes_narrow.xml</code>:</p>
+<pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"&gt;
+    &lt;fragment android:id="@+id/headlines"
+              android:layout_height="fill_parent"
+              android:name="com.example.android.newsreader.HeadlinesFragment"
+              android:layout_width="200dp"
+              android:layout_marginRight="10dp"/&gt;
+    &lt;fragment android:id="@+id/article"
+              android:layout_height="fill_parent"
+              android:name="com.example.android.newsreader.ArticleFragment"
+              android:layout_width="fill_parent" /&gt;
+&lt;/LinearLayout&gt;</pre>
+
+<p>Una vez que se hayan definido todos los diseños posibles, solo se debe asignar el diseño adecuado a cada configuración a través de calificadores de configuración. Ahora ya puedes utilizar la técnica de los alias de diseño:</p>
+
+<p><code>res/values/layouts.xml</code>:</p>
+<pre>&lt;resources&gt;
+    &lt;item name="main_layout" type="layout"&gt;@layout/onepane_with_bar&lt;/item&gt;
+    &lt;bool name="has_two_panes"&gt;false&lt;/bool&gt;
+&lt;/resources&gt;</pre>
+
+<p><code>res/values-sw600dp-land/layouts.xml</code>:</p>
+<pre>&lt;resources&gt;
+    &lt;item name="main_layout" type="layout"&gt;@layout/twopanes&lt;/item&gt;
+    &lt;bool name="has_two_panes"&gt;true&lt;/bool&gt;
+&lt;/resources&gt;</pre>
+
+<p><code>res/values-sw600dp-port/layouts.xml</code>:</p>
+<pre>&lt;resources&gt;
+    &lt;item name="main_layout" type="layout"&gt;@layout/onepane&lt;/item&gt;
+    &lt;bool name="has_two_panes"&gt;false&lt;/bool&gt;
+&lt;/resources&gt;</pre>
+
+<p><code>res/values-large-land/layouts.xml</code>:</p>
+<pre>&lt;resources&gt;
+    &lt;item name="main_layout" type="layout"&gt;@layout/twopanes&lt;/item&gt;
+    &lt;bool name="has_two_panes"&gt;true&lt;/bool&gt;
+&lt;/resources&gt;</pre>
+
+<p><code>res/values-large-port/layouts.xml</code>:</p>
+<pre>&lt;resources&gt;
+    &lt;item name="main_layout" type="layout"&gt;@layout/twopanes_narrow&lt;/item&gt;
+    &lt;bool name="has_two_panes"&gt;true&lt;/bool&gt;
+&lt;/resources&gt;</pre>
+
+
+
+<h2 id="TaskUse9Patch">Cómo utilizar mapas de bits de la clase NinePatch</h2>
+
+<p>Admitir diferentes tamaños de pantalla normalmente implica que las fuentes de imagen también deben poder adaptarse a varios tamaños. Por ejemplo, un fondo de botón debe adaptarse a cualquier forma de botón a la que se aplique.</p>
+
+<p>Si utilizas imágenes sencillas en componentes que pueden cambiar de tamaño, observarás rápidamente que los resultados no es que sean precisamente impresionantes, ya que las imágenes se estirarán o estrecharán. La solución es utilizar mapas de bits de la clase NinePatch, que son archivos PNG con un formato especial que indican las áreas que se pueden y no se pueden estirar.</p>
+
+<p>Por tanto, al diseñar mapas de bits que se vayan a utilizar en componentes con tamaño variable, utiliza siempre mapas de bits de la clase NinePatch. Para convertir un mapa de bits en uno de la clase NinePatch, puedes empezar con una imagen normal (consulta la figura 4, que se ha ampliado cuatro veces para obtener una mayor claridad).</p>
+
+<img src="../../../../images/training/button.png" />
+<p class="img-caption"><strong>Figura 4.</strong> <code>button.png</code></p>
+
+<p>A continuación, puedes pasar a la utilidad <ode
+href="../../../../tools/help/draw9patch.html"><code>draw9patch</code></a> del SDK (que se localiza en el directorio <code>tools/</code>) en la que puedes marcar las áreas que se deben estirar dibujando píxeles a lo largo de los bordes superior e izquierdo. También puedes marcar el área que debe incluir el contenido dibujando píxeles a lo largo de los bordes inferior y derecho, como se muestra en la figura 5.</p>
+
+<img src="../../../../images/training/button_with_marks.png" />
+<p class="img-caption"><strong>Figura 5.</strong> <code>button.9.png</code></p>
+
+<p>Observa los píxeles de color negro situados junto a los bordes. Los que aparecen en los bordes superior e izquierdo indican los lugares en los que se puede estirar la imagen, mientras que los que aparecen en los bordes inferior y derecho indican dónde se debe situar el contenido.</p>
+
+<p>Además, observa la extensión <code>.9.png</code>. Debes utilizar esta extensión, ya que, de este modo, el marco detecta que se trata de una imagen de la clase NinePatch, en lugar de una imagen PNG normal.</p>
+
+<p>Cuando aplicas este fondo a un componente (definiendo <code>android:background="&#64;drawable/button"</code>), el marco estira la imagen de forma adecuada para adaptarla al botón, como se muestra en varios tamaños de la figura 6.</p>
+
+<img src="../../../../images/training/buttons_stretched.png" />
+<p class="img-caption"><strong>Figura 6.</strong> Botón que utiliza la clase NinePatch <code>button.9.png</code> en varios tamaños</p>
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+            <a href="#" class="prev-page-link hide"
+                zh-TW-lang="上一堂課"
+                zh-CN-lang="上一课"
+                ru-lang="Предыдущий"
+                ko-lang="이전"
+                ja-lang="前へ"
+                es-lang="Anterior"               
+                >Previous</a>
+            <a href="#" class="next-page-link hide"
+                zh-TW-lang="下一堂課"
+                zh-CN-lang="下一课"
+                ru-lang="Следующий"
+                ko-lang="다음"
+                ja-lang="次へ"
+                es-lang="Siguiente"               
+                >Next</a>
+          
+        </div>
+        
+      </div>
+      
+      
+      
+      <div class="layout-content-row content-footer next-class" style="display:none" itemscope itemtype="http://schema.org/SiteNavigationElement">
+          <a href="#" class="next-class-link hide">Next class: </a>
+      </div>
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

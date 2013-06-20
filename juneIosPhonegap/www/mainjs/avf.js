@@ -4,18 +4,7 @@ Howard Livingston
 AVF with Jen Mccrrick
 13/06
 iOS Javascript
-
 */
-
-
-//Preparing the DOM
-
-$("document").ready(function() {
-    console.log( "The DOM is Ready!" );
-    
-   
-   getWeather();
-});
 
 //Getting the device ready
 
@@ -24,13 +13,11 @@ document.addEventListener('deviceready', function() {
 	
 });
 
-//all functions fire onload
 
-/*Jen McCarrick method...still receiving error code from Cordova from the console and won't display pics*/
+//Instagram
+var screenOutput;
 
- var screenOutput;
-
-$(function() {
+var json = $(function() {
 	var tag = "popular";
 	var url = "https://api.instagram.com/v1/media/popular?callback=?&amp;client_id=99ec0bb747ce4b099f5c342470f9788c&amp;min_id=10";
   $.getJSON(url,screenOutput);
@@ -44,14 +31,15 @@ $(function() {
   	$("#data-msg").html("<h2>Instagram results:</h2>");
   	$.each(info.data, function(index,photo) {
   	
-  		var pic = "<li><img src='" + photo.images.standard_resolution.url + "' alt='" + photo.user.id + "' /><h4>" + photo.user.full_name + ", <em>(" + photo.user.username +")</em></h4></li>";
+  		var pic = "<li><img src='" + photo.images.standard_resolution.url + "' alt='" + photo.user.id + "' /><h4>" + photo.user.full_name + ", <em>(" + photo.user.username + ")</em></h4></li>";
   				
-  				$("#data-input").append(pic);
+  				$(pic).appendTo("#data-input");
   				
   				});
+  				
   			};
   
-//Get weather info
+//Weather 
 
 var i;
 var l;
@@ -89,30 +77,39 @@ var getWeather = function (){
 
 
 
-//Tried this method but it didn't work
+//Accelerometer
 
-/*var getInstagram = function (){
-$(".apiInstagram").remove();
-		var makeapiInstagram = $('<h2 class="apiInstagram">Instagram</h2>');
-		apiInstagram.appendTo('#apiInstagram');
-		console.log("procede to ajax!");
-		$.ajax({
-        type: "GET",
-        dataType: "jsonp",
-        cache: false,
-        url: "https://api.instagram.com/v1/media/popular?callback=?&amp;client_id=99ec0bb747ce4b099f5c342470f9788c&amp;min_id=10";
-        success: function(data) {
+var onSuccess;
+var onError;
+var acceleration;
 
-            for (var i = 0; i < 6; i++) {
-        $(".apiInstagram").appendTo("#apiInstagram");
-        <a target='_blank' href='" + data.data[i].link +"'><img class='instagram-image' src='" + data.data[i].images.thumbnail.url +"' /></a></div>");   
-                }     
-                            
-        }
-    });
-};
 
-*/
+function onDeviceReady() {
+        navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
+    }
+
+    // onSuccess: Get a snapshot of the current acceleration
+    //
+
+    
+    function onSuccess(acceleration) {
+        alert('Acceleration X: ' + acceleration.x + '\n' +
+              'Acceleration Y: ' + acceleration.y + '\n' +
+              'Acceleration Z: ' + acceleration.z + '\n' +
+              'Timestamp: '      + acceleration.timestamp + '\n');
+    }
+
+    // onError: Failed to get the acceleration
+    //
+    function onError() {
+        alert('What Happened? No Accelerometer!');
+    }
+   
+
+
+
+//Compass
+
 
 //Page init functions
 $('#home').on('pageinit', function(){
@@ -124,22 +121,34 @@ $('#research').on('pageinit', function(){
 });
 
 $('#environment').on('pageinit', function(){
+
+getWeather();
 		console.log("Environment page loaded!");
  });
 
 $('#compassPage').on('pageinit', function(){
+
+/*getCompass();*/
 		console.log("api page loaded!");
 });
 
 $('#accPage').on('pageinit', function(){
+
+
 		console.log("api page loaded!");
 });
 
 $('#geoPage').on('pageinit', function(){
+
+/*getGeo();*/
 		console.log("api page loaded!");
 });
 
 $('#apiPage').on('pageinit', function(){
+
+
 		console.log("api page loaded!");
 });
+
+
 

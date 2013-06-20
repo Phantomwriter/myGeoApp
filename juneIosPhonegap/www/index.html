@@ -75,13 +75,19 @@ AVF-with Jen Mccarrick
     					<p>
       						<img src="images/geo.png" class="sectionImages" alt="environment">
   								<a data-ajax="false" data-role="button" data-mini="true" href="#environment" class="button">
-        							Environment and Geolocation
+        							ENVIRONMENT:Weather-Geo-Compass-Camera-Accelerometer
       							</a>
     					</p>
     					<p>
-      						<img src="images/instagram.png" class="sectionImages" alt="twitterIcon">
+      						<img src="images/instagram.png" class="sectionImages" alt="instagram">
   								<a data-ajax="false" data-role="button" data-mini="true" href="#apiPage" class="button">
-        							Instagram API
+        							Instagram-API
+      							</a>
+    					</p>
+    					<p>
+      						<img src="images/mashup.png" class="sectionImages" alt="mashup">
+  								<a data-ajax="false" data-role="button" data-mini="true" href="#mashupPage" class="button">
+        							Week Four Mash-Up
       							</a>
     					</p>
   					
@@ -113,7 +119,7 @@ AVF-with Jen Mccarrick
         				2
       				</h2>
       				<div class="boxed">
-      				<div>
+      				
       				<p>
             			<strong>Less obvious perks of using 'live' data resources include logins and payments. How could Twitter be used in these two scenarios?</strong><br>
 								Companies realize that social media can help promote their products by reaching a large audience without
@@ -178,14 +184,51 @@ AVF-with Jen Mccarrick
 								<strong>Drone Privacy Bill</strong><br>
 								<strong>http://www.huffingtonpost.com/2012/08/01/drone-privacy-bill_n_1728109.html</strong><br>
 
-          </p>
-          </div>
-          </div>
-    			</div>
+          					</p>
+          			</div>
+    	        </div>
     			<div data-role="collapsible" data-mini="true" data-collapsed="true">
       				<h2 class="homeButton">
         				3
       				</h2>
+      				<div class="boxed">
+      					<div>
+      						<p>
+      					<strong>What are some of the ways that you could change your HTML on your Demo app to be more accessible? (Remember, you can </strong> 
+      					<strong>use the Section tag with jQuery, for instance).</strong> <br>
+      							By customizing my html markup, I could easily insert a video component. 
+      							I could insert and utilize video specific HTML markup. This would allow video to be inserted into my page, which would 
+      							make access to the information on my site more accessible to a wider audience.I could also add captioning to a video through html.
+
+						<strong>Visit a video service on the web (like YouTube) and search for "Screen Reader Demo" and "Mobile Screen Reader" - what</strong> 
+								are some of the common frustrations (or common support mechanisms) that you see among the examples that are given - how could you fix them (or use them)?</strong>
+								One of the common frustrations seems to be not being able to access youtube with a screenreader. I’m not sure how you could fix this problem. 
+								It seems that there’s an audio alternative when prompted, but when the page refreshes, there is still no audio accessible option. 
+								The user would need to find an alternative that is more user friendly when it comes to visual or hearing impairment. 
+								One could use these shortcomings to create a better video service like Youtube that provides better access with a more 
+								effective screenreader for this medium.
+						<strong>Mobile Apps: Please list two apps (either Android or iOS, or both) that are made specifically to support Accessibility.</strong>
+
+								AT & T currently has a media kit containing two apps that assist with accessibility. It focuses mainly on the visually impaired. 
+								The two cross-platform applications are called Mobile Speak and Mobile Magnifier.
+								
+						<strong>Mobile Speak</strong>-Is a basic screen reader app that guides the user through the interface using audio cues.
+
+						<strong>Mobile Magnifier-</strong>This application allows the user to adjust their screen in a variety of ways including magnification and
+								the adjusting of the color spectrum for better accessibility by the visually impaired
+						<strong>Devices: Please list two devices (and some of their features) that are made specifically to support Accessibility.</strong>
+
+								Freedom Scientific has developed a braille reader for the blind that interacts with your computer through Bluetooth. It’s an excellent 
+								example of innovation in accessibility for the visually impaired.
+
+								NCH software has a product called Debut. It is screen capture software designed to capture video from a variety of source and allows 
+								that video to have things such as captions added to the videos.
+								You can also add time stamps, change the color and burn directly to a dvd if need be. I can see how this would help in areas such as 
+								education and training where the ability to make these adjustments would not only benefit the visually impaired, but also allow users 
+								to convey thoughts and ideas in a way that plain text never could.
+      						</p>
+      					</div>
+      				</div>
     			</div>
 				<div data-role="collapsible" data-mini="true" data-collapsed="true">
       				<h2 class="homeButton">
@@ -209,9 +252,9 @@ AVF-with Jen Mccarrick
     				</a>
     			 <div class="boxed">
     				<section id="weatherTitle">
-      					<h2>
+      					<h1>
         					Your Weather
-      					</h2>
+      					</h1>
       					<h5>
         					Through an API
       					</h5>
@@ -245,9 +288,15 @@ AVF-with Jen Mccarrick
       							</a>
     					</p>
     					<p>
-      						<img src="images/geo.png" class="sectionImages" alt="twitterIcon">
+      						<img src="images/geo.png" class="sectionImages" alt="geo">
   								<a data-ajax="false" data-role="button" data-mini="true" href="#geoPage" class="button">
         							Geolocation
+      							</a>
+    					</p>
+    					<p>
+      						<img src="images/camera.png" class="sectionImages" alt="camera">
+  								<a data-ajax="false" data-role="button" data-mini="true" href="#cameraPage" class="button">
+        							Camera
       							</a>
     					</p>
   				    </div>
@@ -255,7 +304,7 @@ AVF-with Jen Mccarrick
     			<footer data-role="footer" data-position="fixed"></footer>
   			</div>
 
-	<!--API page-->
+<!--API page-->
   			<div data-role="page" id="apiPage">
 				<header data-role="header" data-position="fixed">
       				<h1>
@@ -270,23 +319,19 @@ AVF-with Jen Mccarrick
       						First api
       					</h5>
       
-       			<section>
-       			<ul id="data-output">
-       				
-       				<li id="data-message">
-       							
-       						<h2>Pulling Instagram</h2>
-       				</li>
-       			
-       			</ul>
-       			
-    				
+       			<section id="data-msg">
+	
+						<ul id="data-input">
+    						<li></li>
+    					</ul>
 				</section>
    			</div>
   			<footer data-role="footer" data-position="fixed"></footer>
   		</div>
   
-  					<!--Compass page-->
+
+
+<!--Compass page-->
   			<div data-role="page" id="compassPage">
 				<header data-role="header" data-position="fixed">
       				<h1>
@@ -307,7 +352,7 @@ AVF-with Jen Mccarrick
   
   
   
-  					<!--Accelorometer page-->
+<!--Accelorometer page-->
   			<div data-role="page" id="accPage">
 				<header data-role="header" data-position="fixed">
       				<h1>
@@ -317,7 +362,8 @@ AVF-with Jen Mccarrick
   					<a data-role="button" data-mini="true" href="#startHere" data-ajax="false" class="button">
     					Back Home
   					</a>
-  					<section id="accDisplay">
+  					<section >
+  					<p id="getCurrentAcceleration"></p>
 	
   					<!--Display Accelorometer information here-->
       
@@ -328,7 +374,7 @@ AVF-with Jen Mccarrick
   
   
   
-  					<!--Geolocation page-->
+<!--Geolocation page-->
   			<div data-role="page" id="geoPage">
 				<header data-role="header" data-position="fixed">
       				<h1>
@@ -346,6 +392,41 @@ AVF-with Jen Mccarrick
   				<footer data-role="footer" data-position="fixed"></footer>
   			</div>
   			
+<!--Camera page-->
+  			<div data-role="page" id="cameraPage">
+				<header data-role="header" data-position="fixed">
+      				<h1>
+        				Camera Page
+      				</h1>
+  				</header>
+  					<a data-role="button" data-mini="true" class="button" href="#startHere" data-ajax="false">
+    					Back Home
+  					</a>
+  					<section id="cameraDisplay">
+	
+  					<!--Display Geolocation information here-->
+      
+  					</section>
+  				<footer data-role="footer" data-position="fixed"></footer>
+  			</div>
+  
+<!--Mashup page-->
+  			<div data-role="page" id="mashupPage">
+				<header data-role="header" data-position="fixed">
+      				<h1>
+        				My Mashup
+      				</h1>
+  				</header>
+  					<a data-role="button" data-mini="true" class="button" href="#startHere" data-ajax="false">
+    					Back Home
+  					</a>
+  					<section id="mashupDisplay">
+	
+  					<!--Display Geolocation information here-->
+      
+  					</section>
+  				<footer data-role="footer" data-position="fixed"></footer>
+  			</div>
   
   
   
@@ -355,11 +436,10 @@ AVF-with Jen Mccarrick
   </script>
   <script src="mainjs/jquery.mobile-1.2.0.min.js">
   </script>
+  <script type="text/javascript" src="phonegap-2.7.0/cordova-2.7.0.js">
+  </script>
   <script type="text/javascript" src="mainjs/avf.js">
   </script>
-  <script type="text/javascript" src="cordova-2.7.0.js">
-  </script>
-  
   
   </body>
 </html>

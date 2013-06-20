@@ -5,6 +5,11 @@ June, 2013
 */
 
 
+
+
+.instagram-placeholder {
+float: left;
+}
 /*Background Image-all pages*/
 .backgroundImage{background-image:url('http://4206e9.medialib.glogster.com/media/3251d86cddd8541195eb0ebe625a7af6fc8f2cdcb017dc5e2e21d6bb01783a81/old-paper-map-background-for-glogster.jpg');
 		max-width:100%; 
